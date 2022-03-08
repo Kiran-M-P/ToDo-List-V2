@@ -13,9 +13,9 @@
 - list delete button
 - deployed in heroku
 
-## What I __learned__ & __Gained__,
+## What I __learned__ & __gained__,
 
-- Working with MongoDB and CRUD operations
+- Experience working with MongoDB and CRUD operations
 - Accessing DB with nodeJS using mongoose
 - Got better in writing HTTP get & post methods
 - Knowledgeable with EJS
