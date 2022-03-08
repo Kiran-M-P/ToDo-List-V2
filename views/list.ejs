@@ -1,0 +1,108 @@
+<%- include("header") -%>
+
+<div class="box head" id="heading">
+  <!-- hamberger menu -->
+  <div class="btn-group">
+    <button type="button" class="tab ripple" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-bars fa-lg tab-btn" aria-hidden="true"></i>
+    </button>
+
+    <!-- dropdown -->
+    <div class="dropdown-menu">
+
+      <!-- new list Button -- trigger modal-->
+      <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal"><i class="far fa-edit newList" aria-hidden="true"></i>
+        <p class="dropdown newList">New list</p>
+      </a>
+      <div class="dropdown-divider"></div>
+      <!-- default list -->
+      <a class="dropdown-item" href="/"><i class="far fa-file-alt list-icon" aria-hidden="true"></i>
+        <p class="dropdown">todo</p>
+      </a>
+      <!-- customs lists -->
+      <% allList.forEach((list) => { %>
+      <a class="dropdown-item" href="/lists/<%= list.name %>"><i class="far fa-file-alt list-icon" aria-hidden="true"></i>
+        <p class="dropdown"><%= list.name %></p>
+      </a>
+      <% }); %>
+    </div>
+  </div>
+
+
+  <h1><%=listTitle%></h1>
+
+  <!-- list delete button -->
+  <form action="/deletelist" method="post">
+    <button type="submit" name="deleteList" value="<%=listTitle%>" class="tab ripple">
+      <i class="fas fa-trash fa-lg tab-btn" aria-hidden="true"></i>
+    </button>
+  </form>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">List name</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/newList" method="post">
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="newListName" class="newList form-control" placeholder="keep it short" id="newList" autocomplete="off" required pattern="^(?!\s*$).+">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="myButton sub ripple" data-dismiss="modal">Close</button>
+            <button type="submit" class="myButton main ripple">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- task table -->
+<div class="box">
+
+  <!-- adding items -->
+  <% newListItems.forEach((item) => { %>
+  <div class="item">
+    <form action="/strike" method="post">
+      <div class="item">
+        <!-- ternary assignment to assgin checkbox state -->
+        <% const state = item.checkbox === 1 ? "checked" : ""; %>
+        <input type="hidden" name="id" value="<%= item._id %>">
+        <input type="hidden" name="listName" value="<%=listTitle%>">
+        <!-- hidden input to send unchecked box data  -->
+        <input type="hidden" value="0" name="checkbox" onChange="this.form.submit()" />
+        <input type="checkbox" value="1" name="checkbox" <%= state %> onChange="this.form.submit()" onclick="this.previousElementSibling.name=this.checked?'':this.name" />
+        <p><%= item.name; %></p>
+      </div>
+    </form>
+
+    <!-- item delete button -->
+    <form action="/delete" method="post">
+      <button type="submit" class="delete" value="<%= item._id %>" name="delete">+</button>
+      <input type="hidden" name="listName" value="<%=listTitle%>">
+    </form>
+  </div>
+  <% }); %>
+
+  <!-- item add button -->
+  <form class="item form" action="/" method="post">
+    <!-- built-in HTML validation with regex -->
+    <input type="text" autofocus name="newItem" class="itemInput" placeholder="add a task" autocomplete="off" required pattern="^(?!\s*$).+" />
+    <button class="add ripple" type="submit" value="<%=listTitle%>" name="list">+</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+<%- include("footer") -%>

@@ -1,0 +1,20 @@
+{
+  "name": "todolist-v1",
+  "version": "1.0.0",
+  "description": "Practice project on templating and partials",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Kiran M P",
+  "license": "ISC",
+  "engines": {
+    "node": "16.13.1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.2.3"
+  }
+}
