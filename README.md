@@ -13,5 +13,5 @@ Added __additional features__.
 - list delete button
 - deployed in heroku
 
-```
+
 ![alt text](https://github.com/Kiran-M-P/ToDo-List-V2/blob/main/InShot_20220308_222751948.jpg)
