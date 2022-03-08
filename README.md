@@ -1,8 +1,8 @@
 # ToDo-List-V2
 
-###Updated [ToDo-List-V1](https://github.com/Kiran-M-P/ToDo-List) Practice project
+### Updated [ToDo-List-V1](https://github.com/Kiran-M-P/ToDo-List) Practice project
 
-##Added __additional features__.
+## Added __additional features__.
 
 - Added database
 - Saves Strike-out data to DB
@@ -13,7 +13,7 @@
 - list delete button
 - deployed in heroku
 
-##What I __learned__ & __Gained__,
+## What I __learned__ & __Gained__,
 
 - Working with MongoDB and CRUD operations
 - Accessing DB with nodeJS using mongoose
