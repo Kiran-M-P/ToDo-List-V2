@@ -25,5 +25,5 @@
 <hr>
 
 ## Screenshots of UI
+<img scr="https://github.com/Kiran-M-P/ToDo-List-V2/blob/main/screenshot.jpg" alt="screenshot" height="500" width="500" />
 
-![alt text](https://github.com/Kiran-M-P/ToDo-List-V2/blob/main/screenshot.jpg)
